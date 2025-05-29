@@ -4,6 +4,7 @@
 
 package com.leenk;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,4 +14,15 @@ import java.util.List;
 public class EmployeeManagementSystem {
 
     private List<Employee> allEmployees;
+    
+    public EmployeeManagementSystem() {
+        allEmployees = new ArrayList<>();
+    }
+    
+    public void addEmployee(Employee employee) {
+        if (employee == null) {
+            throw new IllegalArgumentException();
+        }
+        allEmployees.add(employee);
+    }
 }

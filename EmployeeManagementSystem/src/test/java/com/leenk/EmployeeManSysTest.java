@@ -13,13 +13,20 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class EmployeeManSysTest {
     private EmployeeManagementSystem system;
+    
+    @Test
+    void addEmployeeTest() {
+        system = new EmployeeManagementSystem();
+        assertThrows(IllegalArgumentException.class, () -> system.addEmployee(null));
+        
+    }
     @Test
     void employeeExistTest() {
         Employee em1 = new Employee("Nokuthula", 38, Department.MANAGEMENT);
         Employee em2 = new Employee("David", 61, Department.FINANCE);
         system = new EmployeeManagementSystem();
         system.addEmployee(em1);
-        assertTrue(system.employeeExist(em1));
+        assertTrue(system.employeeExists(em1));
         assertFalse(system.employeeExists(em2));
     }
     
