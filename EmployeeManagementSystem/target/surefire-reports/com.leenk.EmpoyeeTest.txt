@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.leenk.EmpoyeeTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.171 s <<< FAILURE! - in com.leenk.EmpoyeeTest
+employeeNameTest  Time elapsed: 0.047 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "com.leenk.Employee.getName()" because "this.employee" is null
+	at com.leenk.EmpoyeeTest.employeeNameTest(EmpoyeeTest.java:23)
+
