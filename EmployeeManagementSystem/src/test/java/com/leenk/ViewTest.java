@@ -15,12 +15,12 @@ public class ViewTest {
     @Test
     void showOnTerminalNull() {
         View view = new View();
-        assertThrows(NullPointerException.class, view.showOnTerminal(null));
+        assertThrows(NullPointerException.class, () -> view.showOnTerminal(null));
     }
     
     @Test
     void showOnTerminalTest() {
         View view = new View();
-        assertThrows(IllegalArgumentException.class, view.showOnTerminal("Hello"));
+        assertThrows(IllegalArgumentException.class, () -> view.showOnTerminal("Hello"));
     }
 }
