@@ -1,4 +1,5 @@
 com\leenk\Employee.class
+com\leenk\View.class
 com\leenk\EmployeeDatabase.class
 com\leenk\Department.class
 com\leenk\EmployeeManagementSystem.class

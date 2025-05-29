@@ -69,4 +69,8 @@ public class EmployeeDatabase {
         
         allEmployees.remove(employee);
     }
+    
+    public void clearDatabase() {
+        allEmployees = new ArrayList<>();
+    }
 }
