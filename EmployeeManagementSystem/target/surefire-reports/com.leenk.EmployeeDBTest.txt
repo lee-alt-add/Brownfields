@@ -1,4 +1,11 @@
 -------------------------------------------------------------------------------
 Test set: com.leenk.EmployeeDBTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.614 s - in com.leenk.EmployeeDBTest
+Tests run: 8, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.167 s <<< FAILURE! - in com.leenk.EmployeeDBTest
+removeByNullNameTest  Time elapsed: 0.031 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown ==> expected: <java.lang.IllegalArgumentException> but was: <java.util.NoSuchElementException>
+	at com.leenk.EmployeeDBTest.removeByNullNameTest(EmployeeDBTest.java:74)
+Caused by: java.util.NoSuchElementException
+	at com.leenk.EmployeeDBTest.lambda$removeByNullNameTest$2(EmployeeDBTest.java:74)
+	at com.leenk.EmployeeDBTest.removeByNullNameTest(EmployeeDBTest.java:74)
+

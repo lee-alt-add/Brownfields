@@ -59,4 +59,29 @@ public class EmployeeDBTest {
         db = new EmployeeDatabase();
         assertThrows(IllegalArgumentException.class,() -> db.removeEmployee(null));
     }
+    
+    @Test
+    void removeNotExistingEmployeeTestTwo() {
+        db = new EmployeeDatabase();
+        Employee em1 = new Employee("Nokuthula", 38, Department.MANAGEMENT);
+        db.removeEmployee(em1);
+        assertTrue(db.getAllEmployees().size() == 0);
+    }
+    
+    @Test
+    void removeByNullNameTest() {
+        db = new EmployeeDatabase();
+        assertThrows(IllegalArgumentException.class,() -> db.removeByName(null));
+    }
+    
+    @Test
+    void removeByNameTest() {
+        db = new EmployeeDatabase();
+        Employee em1 = new Employee("Nokuthula", 38, Department.MANAGEMENT);
+        db.addEmployee(em1);
+        assertEquals(1, db.getAllEmployees().size());
+        
+        db.removeByName("Nokuthula");
+        assertEquals(0, db.getAllEmployees().size());
+    }
 }

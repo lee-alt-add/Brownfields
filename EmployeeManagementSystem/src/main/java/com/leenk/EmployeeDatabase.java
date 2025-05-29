@@ -6,6 +6,7 @@ package com.leenk;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -37,5 +38,35 @@ public class EmployeeDatabase {
     
     public boolean employeeExists(Employee employee) {
         return allEmployees.stream().anyMatch(e -> e.equals(employee));
+    }
+    
+    public void removeEmployee(Employee employee) {
+        if (employee == null) {
+            throw new IllegalArgumentException();
+        }
+        
+        if (!employeeExists(employee)) {
+            System.out.println("Employee does not exist");
+            return;
+        }
+        
+        allEmployees.remove(employee);
+    }
+    
+    public void removeByName(String employeeName) {
+        if (employeeName == null) {
+            throw new IllegalArgumentException();
+        }
+        Employee employee = allEmployees.stream()
+                .filter(e -> e.getName().equals(employeeName))
+                .collect(Collectors.toList())
+                .getFirst();
+        
+        if (employee == null) {
+            System.out.println("Employee does not exist");
+            return;
+        }
+        
+        allEmployees.remove(employee);
     }
 }

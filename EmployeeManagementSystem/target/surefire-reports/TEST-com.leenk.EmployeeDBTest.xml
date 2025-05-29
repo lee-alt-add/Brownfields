@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.leenk.EmployeeDBTest" time="0.614" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.leenk.EmployeeDBTest" time="0.167" tests="8" errors="0" skipped="0" failures="1">
   <properties>
     <property name="java.specification.version" value="23"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-23\bin"/>
-    <property name="sun.java.command" value="C:\Users\OTHERL~1\AppData\Local\Temp\surefire2329252428605837148\surefirebooter17744375573042701921.jar C:\Users\Other Leenks\AppData\Local\Temp\surefire2329252428605837148 2025-05-29T19-34-30_335-jvmRun1 surefire14135921006877876880tmp surefire_06145134322527471992tmp"/>
+    <property name="sun.java.command" value="C:\Users\OTHERL~1\AppData\Local\Temp\surefire1699114816836290234\surefirebooter17310648846659963855.jar C:\Users\Other Leenks\AppData\Local\Temp\surefire1699114816836290234 2025-05-29T20-07-59_489-jvmRun1 surefire14111941515773826051tmp surefire_04761477714336701404tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="test" value="com.leenk.EmployeeDBTest"/>
     <property name="surefire.test.class.path" value="C:\Users\Other Leenks\Git App\Documents\GitHub\OOP\Brownfields\EmployeeManagementSystem\target\test-classes;C:\Users\Other Leenks\Git App\Documents\GitHub\OOP\Brownfields\EmployeeManagementSystem\target\classes;C:\Users\Other Leenks\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.3\junit-jupiter-engine-5.6.3.jar;C:\Users\Other Leenks\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\Other Leenks\.m2\repository\org\junit\platform\junit-platform-engine\1.6.3\junit-platform-engine-1.6.3.jar;C:\Users\Other Leenks\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Other Leenks\.m2\repository\org\junit\platform\junit-platform-commons\1.6.3\junit-platform-commons-1.6.3.jar;C:\Users\Other Leenks\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.3\junit-jupiter-api-5.6.3.jar;C:\Users\Other Leenks\.m2\repository\org\mockito\mockito-core\3.6.28\mockito-core-3.6.28.jar;C:\Users\Other Leenks\.m2\repository\net\bytebuddy\byte-buddy\1.10.18\byte-buddy-1.10.18.jar;C:\Users\Other Leenks\.m2\repository\net\bytebuddy\byte-buddy-agent\1.10.18\byte-buddy-agent-1.10.18.jar;C:\Users\Other Leenks\.m2\repository\org\objenesis\objenesis\3.1\objenesis-3.1.jar;"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\OTHERL~1\AppData\Local\Temp\surefire2329252428605837148\surefirebooter17744375573042701921.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\OTHERL~1\AppData\Local\Temp\surefire1699114816836290234\surefirebooter17310648846659963855.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="23+37-2369"/>
@@ -60,7 +60,19 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="67.0"/>
   </properties>
-  <testcase name="addNullEmployeeTest" classname="com.leenk.EmployeeDBTest" time="0.116"/>
-  <testcase name="employeeExistTest" classname="com.leenk.EmployeeDBTest" time="0.402"/>
-  <testcase name="addExistingEmployeeTest" classname="com.leenk.EmployeeDBTest" time="0.02"/>
+  <testcase name="removeEmployeeTestOne" classname="com.leenk.EmployeeDBTest" time="0.067"/>
+  <testcase name="addNullEmployeeTest" classname="com.leenk.EmployeeDBTest" time="0.016"/>
+  <testcase name="employeeExistTest" classname="com.leenk.EmployeeDBTest" time="0"/>
+  <testcase name="removeByNullNameTest" classname="com.leenk.EmployeeDBTest" time="0.031">
+    <failure message="Unexpected exception type thrown ==&gt; expected: &lt;java.lang.IllegalArgumentException&gt; but was: &lt;java.util.NoSuchElementException&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Unexpected exception type thrown ==> expected: <java.lang.IllegalArgumentException> but was: <java.util.NoSuchElementException>
+	at com.leenk.EmployeeDBTest.removeByNullNameTest(EmployeeDBTest.java:74)
+Caused by: java.util.NoSuchElementException
+	at com.leenk.EmployeeDBTest.lambda$removeByNullNameTest$2(EmployeeDBTest.java:74)
+	at com.leenk.EmployeeDBTest.removeByNullNameTest(EmployeeDBTest.java:74)
+]]></failure>
+  </testcase>
+  <testcase name="removeNotExistingEmployeeTestTwo" classname="com.leenk.EmployeeDBTest" time="0"/>
+  <testcase name="addExistingEmployeeTest" classname="com.leenk.EmployeeDBTest" time="0"/>
+  <testcase name="removeByNameTest" classname="com.leenk.EmployeeDBTest" time="0"/>
+  <testcase name="removeNullEmployeeTest" classname="com.leenk.EmployeeDBTest" time="0.015"/>
 </testsuite>
