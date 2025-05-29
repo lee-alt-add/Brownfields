@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.leenk.EmpoyeeTest" time="0.078" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.leenk.EmployeeManSysTest" time="0.106" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="23"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,9 +15,9 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-23\bin"/>
-    <property name="sun.java.command" value="C:\Users\OTHERL~1\AppData\Local\Temp\surefire2598134516455826123\surefirebooter13914628057058722121.jar C:\Users\Other Leenks\AppData\Local\Temp\surefire2598134516455826123 2025-05-29T18-36-35_887-jvmRun1 surefire4251457619722267267tmp surefire_02632273242005062043tmp"/>
+    <property name="sun.java.command" value="C:\Users\OTHERL~1\AppData\Local\Temp\surefire9680209310325388356\surefirebooter5051735642769514611.jar C:\Users\Other Leenks\AppData\Local\Temp\surefire9680209310325388356 2025-05-29T18-37-09_779-jvmRun1 surefire432030315989650550tmp surefire_01320560981426749182tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="test" value="com.leenk.EmpoyeeTest#employeeEqualTest"/>
+    <property name="test" value="com.leenk.EmployeeManSysTest"/>
     <property name="surefire.test.class.path" value="C:\Users\Other Leenks\Git App\Documents\GitHub\OOP\Brownfields\EmployeeManagementSystem\target\test-classes;C:\Users\Other Leenks\Git App\Documents\GitHub\OOP\Brownfields\EmployeeManagementSystem\target\classes;C:\Users\Other Leenks\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.3\junit-jupiter-engine-5.6.3.jar;C:\Users\Other Leenks\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\Other Leenks\.m2\repository\org\junit\platform\junit-platform-engine\1.6.3\junit-platform-engine-1.6.3.jar;C:\Users\Other Leenks\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Other Leenks\.m2\repository\org\junit\platform\junit-platform-commons\1.6.3\junit-platform-commons-1.6.3.jar;C:\Users\Other Leenks\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.3\junit-jupiter-api-5.6.3.jar;C:\Users\Other Leenks\.m2\repository\org\mockito\mockito-core\3.6.28\mockito-core-3.6.28.jar;C:\Users\Other Leenks\.m2\repository\net\bytebuddy\byte-buddy\1.10.18\byte-buddy-1.10.18.jar;C:\Users\Other Leenks\.m2\repository\net\bytebuddy\byte-buddy-agent\1.10.18\byte-buddy-agent-1.10.18.jar;C:\Users\Other Leenks\.m2\repository\org\objenesis\objenesis\3.1\objenesis-3.1.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\Other Leenks"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\OTHERL~1\AppData\Local\Temp\surefire2598134516455826123\surefirebooter13914628057058722121.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\OTHERL~1\AppData\Local\Temp\surefire9680209310325388356\surefirebooter5051735642769514611.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="23+37-2369"/>
@@ -60,5 +60,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="67.0"/>
   </properties>
-  <testcase name="employeeEqualTest" classname="com.leenk.EmpoyeeTest" time="0.048"/>
+  <testcase name="addNullEmployeeTest" classname="com.leenk.EmployeeManSysTest" time="0.065"/>
+  <testcase name="employeeExistTest" classname="com.leenk.EmployeeManSysTest" time="0.007"/>
+  <testcase name="addExistingEmployeeTest" classname="com.leenk.EmployeeManSysTest" time="0.007"/>
 </testsuite>

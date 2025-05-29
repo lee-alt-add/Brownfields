@@ -30,4 +30,21 @@ public class Employee {
     public String getName() { return name; }
     public int getAge() { return age; }
     public Department getDepartment() { return department; }
+    
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) return true;
+        if (other == null || getClass() != other.getClass()) return false;
+        
+        Employee employee = (Employee) other;
+        
+        return this.name.equals(employee.getName()) && 
+                this.age == employee.getAge() &&
+                this.department == employee.getDepartment();
+    }
+    
+    @Override
+    public String toString() {
+        return "Name: " + name + ", Age: " + age + ", Department: " + department.toString();
+    }
 }

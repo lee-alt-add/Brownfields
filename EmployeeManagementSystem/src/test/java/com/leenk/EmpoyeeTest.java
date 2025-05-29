@@ -29,4 +29,21 @@ public class EmpoyeeTest {
         Employee employee = new Employee("Sharon", 28, Department.FINANCE);
         assertEquals(Department.FINANCE, employee.getDepartment());
     }
+    
+    @Test
+    void employeeInfoTest() {
+        Employee em1 = new Employee("Simon", 21, Department.ADMIN);
+        String expected = "Name: Simon, Age: 21, Department: ADMIN";
+        assertEquals(expected, em1.toString());
+    }
+    
+    @Test
+    void employeeEqualTest() {
+        Employee em1 = new Employee("Simon", 21, Department.ADMIN);
+        Employee em2 = new Employee("Simon", 21, Department.ADMIN);
+        Employee em3 = new Employee("Sharon", 28, Department.FINANCE);
+        assertTrue(em1.equals(em1), "Employee should be same as self");
+        assertTrue(em1.equals(em2), "Employee details should match");
+        assertFalse(em1.equals(em3));
+    }
 }

@@ -15,11 +15,21 @@ public class EmployeeManSysTest {
     private EmployeeManagementSystem system;
     
     @Test
-    void addEmployeeTest() {
+    void addNullEmployeeTest() {
         system = new EmployeeManagementSystem();
         assertThrows(IllegalArgumentException.class, () -> system.addEmployee(null));
-        
     }
+    
+    @Test
+    void addExistingEmployeeTest() {
+        system = new EmployeeManagementSystem();
+        Employee em1 = new Employee("Nokuthula", 38, Department.MANAGEMENT);
+        Employee em2 = new Employee("Nokuthula", 38, Department.MANAGEMENT);
+        system.addEmployee(em1);
+        system.addEmployee(em2);
+        assertEquals(1, system.getAllEmployees().size());
+    }
+    
     @Test
     void employeeExistTest() {
         Employee em1 = new Employee("Nokuthula", 38, Department.MANAGEMENT);
@@ -28,15 +38,5 @@ public class EmployeeManSysTest {
         system.addEmployee(em1);
         assertTrue(system.employeeExists(em1));
         assertFalse(system.employeeExists(em2));
-    }
-    
-    @Test
-    void generateEmployeeInfoTest() {
-        Employee em1 = new Employee("Simon", 21, Department.ADMIN);
-        system = new EmployeeManagementSystem();
-        system.addEmployee(em1);
-        String expected = "Name: Simon, Age: 21, Department: ADMIN";
-        String result = system.generateEmployeeInfo(em1);
-        assertEquals(expected, result);
     }
 }
