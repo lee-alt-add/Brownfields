@@ -13,30 +13,10 @@ import java.util.List;
  */
 public class EmployeeManagementSystem {
 
-    private List<Employee> allEmployees;
+    private EmployeeDatabase db;
     
-    public EmployeeManagementSystem() {
-        allEmployees = new ArrayList<>();
+    public EmployeeManagementSystem(EmployeeDatabase db) {
+        this.db = db;
     }
     
-    public List<Employee> getAllEmployees() {
-        return allEmployees;
-    }
-    
-    public void addEmployee(Employee employee) {
-        if (employee == null) {
-            throw new IllegalArgumentException();
-        }
-        
-        if (employeeExists(employee)) {
-            System.out.println("Employee already exist");
-            return;
-        }
-        
-        allEmployees.add(employee);
-    }
-    
-    public boolean employeeExists(Employee employee) {
-        return allEmployees.stream().anyMatch(e -> e.equals(employee));
-    }
 }
