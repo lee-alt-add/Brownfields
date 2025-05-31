@@ -13,13 +13,13 @@ import java.util.stream.Collectors;
  * @author Other Leenks
  */
 public class EmployeeDatabase {
-    private List<Employee> allEmployees;
+    private ArrayList<Employee> allEmployees;
     
     public EmployeeDatabase() {
         allEmployees = new ArrayList<>();
     }
     
-    public List<Employee> getAllEmployees() {
+    public ArrayList<Employee> getAllEmployees() {
         return allEmployees;
     }
     
