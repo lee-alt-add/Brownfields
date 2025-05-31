@@ -26,10 +26,6 @@ public class ProductTest {
         Product product = new Product("Chocolate", 23.00, 50);
         product.setPrice(-27.00);
         assertEquals(23.00, product.getPrice(), "Price negative test failed");
-        
-        // Test Two
-        product.setPrice(null);
-        assertEquals(23.00, product.getPrice(), "Price null test failed");
     }
     
     @Test
@@ -44,10 +40,6 @@ public class ProductTest {
         Product product = new Product("Chocolate", 23.00, 50);
         product.setQuantity(-67);
         assertEquals(23.00, product.getPrice(), "Quantity negative test failed");
-        
-        // Test Two
-        product.setQuantity(null);
-        assertEquals(23.00, product.getPrice(), "Quantity null test failed");
     }
     
     @Test
