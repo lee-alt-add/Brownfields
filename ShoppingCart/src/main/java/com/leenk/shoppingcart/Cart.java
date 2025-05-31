@@ -6,6 +6,7 @@ package com.leenk.shoppingcart;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -16,5 +17,31 @@ public class Cart {
     
     public Cart() {
         items = new ArrayList<>();
+    }
+    
+    public List<Product> getItems() {
+        return items;
+    }
+    
+    public void addItem(Product product) {
+        if (product == null) {
+            System.out.println("Item cannot be null");
+            return;
+        }
+        items.add(product);
+    }
+    
+    public void removeItem(Product product) {
+        if (product == null) {
+            System.out.println("Item cannot be null");
+        }
+        items.remove(product);
+    }
+    
+    public double getTotalCost() {
+        return items.stream()
+                .map(i -> i.getPrice())
+                .collect(Collectors.toList())
+                .stream().count();
     }
 }

@@ -18,26 +18,26 @@ public class CartTest {
     void addItemTest() {
         Cart cart = new Cart();
         Product product = new Product("Lays", 22.00, 35);
-        cart.addProduct(product);
-        assertEqauls(1, cart.getItems().length());
+        cart.addItem(product);
+        assertEquals(1, cart.getItems().size());
     }
     
     @Test
     void addItemFailedTest() {
         Cart cart = new Cart();
         Product product = null;
-        cart.addProduct(product);
-        assertEqauls(0, cart.getItems().length());
+        cart.addItem(product);
+        assertEquals(0, cart.getItems().size());
     }
     
     @Test
     void removeItemTest() {
         Cart cart = new Cart();
         Product product = new Product("Lays", 22.00, 35);
-        cart.addProduct(product);
-        assertEqauls(1, cart.getItems().length());
+        cart.addItem(product);
+        assertEquals(1, cart.getItems().size());
         cart.removeItem(product);
-        assertEquals(0, cart.getItems().length());
+        assertEquals(0, cart.getItems().size());
     }
     
     @Test
@@ -45,8 +45,8 @@ public class CartTest {
         Cart cart = new Cart();
         Product product = new Product("Lays", 22.00, 2);
         Product product1 = new Product("Chocolate", 26.00, 1);
-        cart.addProduct(product);
-        cart.addProduct(product1);
-        assertEqauls(70.00, cart.getTotalCost());
+        cart.addItem(product);
+        cart.addItem(product1);
+        assertEquals(70.00, cart.getTotalCost());
     }
 }
