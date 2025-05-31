@@ -40,8 +40,7 @@ public class Cart {
     
     public double getTotalCost() {
         return items.stream()
-                .map(i -> i.getPrice())
-                .collect(Collectors.toList())
-                .stream().count();
+                .mapToDouble(i -> i.getPrice() * i.getQuantity())
+                .sum();
     }
 }
