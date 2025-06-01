@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
  */
 public class Cart {
     private List<Product> items;
-    private double tax;
+    private final double tax;
     
     public Cart() {
         items = new ArrayList<>();
@@ -25,11 +25,10 @@ public class Cart {
         
         try (InputStream in = Cart.class.getClassLoader().getResourceAsStream("Config.properties")){
             prop.load(in);
-            tax = Double.parseDouble(prop.getProperty("tax", "0.00"));
         } catch (IOException e) {
             System.out.println("Could not load config file. Tax number set to default 0%");
-            tax = 0.00;
         }
+        tax = Double.parseDouble(prop.getProperty("tax", "0.00"));
         
     }
     
