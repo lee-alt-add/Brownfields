@@ -15,6 +15,12 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class CartTest {
     @Test
+    void getTaxTest() {
+        Cart cart = new Cart();
+        assertEquals(15.00, cart.getTax());
+    }
+    
+    @Test
     void addItemTest() {
         Cart cart = new Cart();
         Product product = new Product("Lays", 22.00, 35);

@@ -4,8 +4,11 @@
  */
 package com.leenk.shoppingcart;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.stream.Collectors;
 
 /**
@@ -14,13 +17,28 @@ import java.util.stream.Collectors;
  */
 public class Cart {
     private List<Product> items;
+    private double tax;
     
     public Cart() {
         items = new ArrayList<>();
+        Properties prop = new Properties();
+        
+        try (InputStream in = Cart.class.getClassLoader().getResourceAsStream("Config.properties")){
+            prop.load(in);
+            tax = Double.parseDouble(prop.getProperty("tax", "0.00"));
+        } catch (IOException e) {
+            System.out.println("Could not load config file. Tax number set to default 0%");
+            tax = 0.00;
+        }
+        
     }
     
     public List<Product> getItems() {
         return items;
+    }
+    
+    public double getTax() {
+        return tax;
     }
     
     public void addItem(Product product) {
