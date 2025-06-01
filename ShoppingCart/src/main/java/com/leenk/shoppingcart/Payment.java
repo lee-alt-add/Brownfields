@@ -22,8 +22,8 @@ public class Payment {
     public void getReceipt() {
         cart.getItems()
                 .stream()
-                .forEach(i -> System.out.println(i.getQuantity() + " x " + i.getName() + " @ " + i.getPrice() + "\n"));
-        System.out.println("Total (with tax): $" + cart.getTotalCost());
+                .forEach(i -> System.out.println(i.getQuantity() + " x " + i.getName() + " @ " + i.getPrice()));
+        System.out.println("\nTotal (with tax): $" + cart.getTotalCost());
         
     }
 }
