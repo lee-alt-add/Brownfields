@@ -34,6 +34,7 @@ public class Cart {
     public void removeItem(Product product) {
         if (product == null) {
             System.out.println("Item cannot be null");
+            return;
         }
         items.remove(product);
     }

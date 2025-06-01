@@ -41,6 +41,15 @@ public class CartTest {
     }
     
     @Test
+    void removeItemFailedTest() {
+        Cart cart = new Cart();
+        Product product = new Product("Lays", 22.00, 35);
+        cart.addItem(product);
+        cart.removeItem(null);
+        assertEquals(1, cart.getItems().size());
+    }
+    
+    @Test
     void getTotalCostTest() {
         Cart cart = new Cart();
         Product product = new Product("Lays", 22.00, 2);
