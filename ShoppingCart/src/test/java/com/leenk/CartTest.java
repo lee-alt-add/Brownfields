@@ -62,7 +62,7 @@ public class CartTest {
         Product product1 = new Product("Chocolate", 26.00, 1);
         cart.addItem(product);
         cart.addItem(product1);
-        double expected = 70 * (cart.getTax() / 100);
+        double expected = 70.00 + 10.5;
         assertEquals(expected, cart.getTotalCost());
     }
 }
