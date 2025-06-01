@@ -1,0 +1,91 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.leenk;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author Other Leenks
+ */
+public class Database {
+    private File file;
+    
+    public Database() {}
+    
+    public void loadFile(String fileName) {
+        file = new File(fileName);
+        if (file.exists()) {
+            System.out.println("Opened " + file.getName() + " file.");
+        }
+        else {
+            try {
+                System.out.println(file.getName() + " does not exist. Creating it...\nFile created");
+                file.createNewFile();
+            } catch (Exception e) {
+                System.out.println("Error creating file");
+            }
+            
+        }
+    }
+    
+    public void addTask(String task) {
+        if (isNull(task) || taskExists(task)) return;
+        
+        writeToFile(task);
+    }
+    
+    public void removeTask(String task) {
+        if (isNull(task) || !taskExists(task)) return;
+        
+        List<String> allTasks = getTasks();
+        String fileName = file.getAbsolutePath();
+        file.delete();
+        loadFile(fileName);
+        
+        allTasks.stream().forEach(i -> writeToFile(i));
+    }
+    
+    private void writeToFile(String task) {
+        try (FileWriter writer = new FileWriter(file.getAbsolutePath())) {
+            writer.write(task);
+        } catch (IOException e) {
+            System.out.println("Error writing file: " + e.getMessage());
+        }
+    }
+    
+    private boolean isNull(Object object) {
+        if (object == null) {
+            System.out.println("Task cannot be null");
+            return true;
+        }
+        return false;
+    }
+    
+    private boolean taskExists(String task) {
+        if (getTasks().contains(task.toLowerCase())) {
+            System.out.println("Task already exists");
+            return true;
+        }
+        return false;
+    }
+    
+    public List<String> getTasks() {
+        List<String> output = new ArrayList<>();
+        try {
+            Files.lines(Paths.get(file.getAbsolutePath()))
+                    .forEach(i -> output.add(i.toLowerCase()));
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
+        return output;
+    }
+}
