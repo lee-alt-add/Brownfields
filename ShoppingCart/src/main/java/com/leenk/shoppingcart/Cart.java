@@ -48,6 +48,14 @@ public class Cart {
         items.add(product);
     }
     
+    public void addItems(List<Product> products) {
+        if (products == null) {
+            System.out.println("Item cannot be null");
+            return;
+        }
+        products.stream().forEach(i -> addItem(i));
+    }
+    
     public void removeItem(Product product) {
         if (product == null) {
             System.out.println("Item cannot be null");

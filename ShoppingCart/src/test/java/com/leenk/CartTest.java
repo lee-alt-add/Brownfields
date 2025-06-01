@@ -6,6 +6,7 @@ package com.leenk;
 
 import com.leenk.shoppingcart.Cart;
 import com.leenk.shoppingcart.Product;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -34,6 +35,22 @@ public class CartTest {
         Product product = null;
         cart.addItem(product);
         assertEquals(0, cart.getItems().size());
+    }
+    
+    @Test
+    void addItemsTest() {
+        Cart cart = new Cart();
+        
+        // Test One
+        List<Product> products = List.of(new Product("Lays", 22.00, 35), new Product("milk", 22.00, 2));
+        cart.addItems(products);
+        assertEquals(2, cart.getItems().size());
+        
+        // Test two
+        List<Product> moreProducts = List.of(new Product("sweets", 12.00, 8), new Product("bread", 18.00, 1));
+        cart.addItem(new Product("Chocolate", 23.00, 3));
+        cart.addItems(moreProducts);
+        assertEquals(5, cart.getItems().size());
     }
     
     @Test
