@@ -4,6 +4,8 @@
 
 package com.leenk.shoppingcart;
 
+import java.util.List;
+
 /**
  *
  * @author Other Leenks
@@ -17,10 +19,7 @@ public class ShoppingCart {
         Product chocolate = new Product("Chocolate", 23.00, 3);
         
         Cart cart = new Cart();
-        cart.addItem(milk);
-        cart.addItem(bread);
-        cart.addItem(eggs);
-        cart.addItem(chocolate);
+        cart.addItems(List.of(milk,bread,eggs,chocolate));
         
         Payment payment = new Payment(cart);
         payment.getReceipt();
