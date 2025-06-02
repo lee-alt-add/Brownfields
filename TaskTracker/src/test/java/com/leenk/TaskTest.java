@@ -14,21 +14,26 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TaskTest {
     @Test
     void getTaskTest() {
-        Task task = new Task("Cook",1);
+        Task task = new Task("Cook");
+        task.setTaskNumber(1);
         assertTrue("cook".equals(task.getTask()));
     }
     
     @Test
     void getTaskNoTest() {
-        Task task = new Task("Cook",1);
+        Task task = new Task("Cook");
+        task.setTaskNumber(1);
         assertEquals(1, task.getTaskNumber());
     }
     
     @Test
     void equalsTest() {
-        Task task = new Task("Cook",1);
+        Task task = new Task("Cook");
+        task.setTaskNumber(1);
+        Task newTask = new Task("Walk");
+        newTask.setTaskNumber(2);
+        
         assertTrue(task.equals(task));
-        assertTrue(new Task("Cook",1).equals(task));
-        assertFalse(new Task("Walk",2).equals(task));
+        assertFalse(newTask.equals(task));
     }
 }

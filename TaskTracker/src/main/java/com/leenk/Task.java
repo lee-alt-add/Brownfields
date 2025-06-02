@@ -10,11 +10,10 @@ package com.leenk;
  */
 public class Task {
     private final String task;
-    private final int number;
+    private int number;
     
-    public Task(String task, int number) {
+    public Task(String task) {
         this.task = task.toLowerCase().trim();
-        this.number = number;
     }
     
     public String getTask() {
@@ -23,6 +22,10 @@ public class Task {
     
     public int getTaskNumber() {
         return number;
+    }
+    
+    public void setTaskNumber(int number) {
+        this.number = number;
     }
     
     @Override
