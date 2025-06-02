@@ -46,14 +46,18 @@ public class Database {
     }
     
     public void removeTask(String task) {
-        if (isNull(task) || !taskExists(task)) return;
+        if (isNull(task)) return;
         
-        List<String> allTasks = getTasks();
-        String fileName = file.getName();
-        file.delete();
-        loadFile(fileName);
-        
-        allTasks.stream().forEach(i -> writeToFile(i));
+        if (taskExists(task)) {
+            List<String> allTasks = getTasks();
+            allTasks.remove(task.toLowerCase());
+            String fileName = file.getName();
+            file.delete();
+            loadFile(fileName);
+
+            allTasks.stream().forEach(i -> writeToFile(i));
+        }
+        System.out.println("Invalid task name");
     }
     
     public List<String> getTasks() {
@@ -61,7 +65,8 @@ public class Database {
         try {
             Files.lines(Paths.get(filePath))
                     .forEach(i -> output.add(i.toLowerCase()));
-        } catch (IOException e) {
+        } 
+        catch (IOException e) {
             System.out.println("Error reading file: " + e.getMessage());
         }
         return output;

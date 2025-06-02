@@ -45,12 +45,14 @@ public class DatabaseTest {
     
     @Test
     void loadExistingFileTest() {
+        db.loadFile("tester.txt");
+        
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
         System.setOut(new PrintStream(buffer));
         
         db.loadFile("tester.txt");
         
-        String expected = "Opened test.txt file.";
+        String expected = "Opened tester.txt file.";
         String result = buffer.toString().trim();
         
         assertEquals(expected, result);
@@ -85,7 +87,7 @@ public class DatabaseTest {
         assertEquals(1, db.getTasks().size());
         
         db.removeTask("Walk the dog");
-        assertEquals(1, db.getTasks().size());
+        assertEquals(0, db.getTasks().size());
     }
     
     @Test
@@ -117,10 +119,17 @@ public class DatabaseTest {
         
         db.removeTask("Cook");
         
-        String expected = "Task does not exist";
+        String expected = "Invalid task name";
         String result = buffer.toString().trim();
         
         assertEquals(1, db.getTasks().size());
         assertEquals(expected, result);
+    }
+    
+    @Test
+    void getTasksTest() {
+        db.loadFile("test7.txt");
+        db.addTask("Walk the dog");
+        assertTrue(db.getTasks().contains("walk the dog"));
     }
 }
