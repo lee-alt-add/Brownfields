@@ -50,22 +50,24 @@ public class Database {
         if (isNull(task)) return;
         
         if (taskExists(task)) {
-            List<String> allTasks = getTasks();
+            // Getting every task in a list
+            List<String> allTasks = new ArrayList<>(getTasks().stream().map(i-> i.getTask()).toList());
+            
             allTasks.remove(task.toLowerCase());
             String fileName = file.getName();
             file.delete();
             loadFile(fileName);
-
             allTasks.stream().forEach(i -> writeToFile(i));
         }
         System.out.println("Invalid task name");
     }
     
-    public List<String> getTasks() {
-        List<String> output = new ArrayList<>();
+    public List<Task> getTasks() {
+        List<Task> output = new ArrayList<>();
+        NumGenerator number = new NumGenerator(0);
         try {
             Files.lines(Paths.get(filePath))
-                    .forEach(i -> output.add(i.toLowerCase()));
+                    .forEach(i -> output.add(new Task(i).setTaskNumber(number.generate())));
         } 
         catch (IOException e) {
             System.out.println("Error reading file: " + e.getMessage());
@@ -95,7 +97,10 @@ public class Database {
     }
     
     private boolean taskExists(String task) {
-        if (getTasks().contains(task.toLowerCase())) {
+        // Getting every task in a list
+        List<String> allTasks = getTasks().stream().map(i-> i.getTask()).toList();
+        
+        if (allTasks.contains(task.toLowerCase())) {
             System.out.println("Task already exists");
             return true;
         }

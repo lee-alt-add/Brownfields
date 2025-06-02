@@ -24,8 +24,9 @@ public class Task {
         return number;
     }
     
-    public void setTaskNumber(int number) {
+    public Task setTaskNumber(int number) {
         this.number = number;
+        return this;
     }
     
     @Override

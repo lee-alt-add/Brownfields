@@ -130,6 +130,6 @@ public class DatabaseTest {
     void getTasksTest() {
         db.loadFile("test7.txt");
         db.addTask("Walk the dog");
-        assertTrue(db.getTasks().contains("walk the dog"));
+        assertTrue(db.getTasks().stream().map(i -> i.getTask()).toList().contains("walk the dog"));
     }
 }
