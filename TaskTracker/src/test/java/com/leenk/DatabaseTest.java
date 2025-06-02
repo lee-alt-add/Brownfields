@@ -8,64 +8,64 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
 
 /**
  *
  * @author Other Leenks
  */
 public class DatabaseTest {
+    private Database db;
+    
+    @BeforeEach
+    void setup() {
+        db = new Database();
+    }
+    
+    @AfterEach
+    void teardown() {
+        db.deleteDBFile();
+    }
+    
     @Test
     void loadTest() throws IOException {
-        File file = new File("src/test/java/com/leenk/files/test.txt");
-        Database db = new Database();
-        
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
         System.setOut(new PrintStream(buffer, true));
         
-        db.loadFile("src/test/java/com/leenk/files/test.txt");
+        db.loadFile("test.txt");
         
         String result = buffer.toString().trim();
         String expected = "test.txt does not exist. Creating it...\nFile created";
         
         assertEquals(expected, result);
-        file.delete();
     }
     
     @Test
     void loadExistingFileTest() {
-        File file = creatTestFile();
-        
-        Database db = new Database();
-        
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
         System.setOut(new PrintStream(buffer));
         
-        db.loadFile("src/test/java/com/leenk/files/test.txt");
+        db.loadFile("tester.txt");
         
         String expected = "Opened test.txt file.";
         String result = buffer.toString().trim();
         
         assertEquals(expected, result);
-        file.delete();
     }
     
     @Test
     void addTaskTest() {
-        Database db = new Database();
-        File file = creatTestFile();
-        db.loadFile(file.getAbsolutePath());
+        db.loadFile("test1.txt");
         db.addTask("Walk the dog");
         assertEquals(1, db.getTasks().size());
-        file.delete();
     }
     
     @Test
     void addExistingTaskTest() {
-        Database db = new Database();
-        File file = creatTestFile();
-        db.loadFile(file.getAbsolutePath());
+        db.loadFile("test2.txt");
         db.addTask("Walk the dog");
         db.addTask("Walk the dog");
         assertEquals(1, db.getTasks().size());
@@ -73,18 +73,14 @@ public class DatabaseTest {
     
     @Test
     void addNullTaskTest() {
-        Database db = new Database();
-        File file = creatTestFile();
-        db.loadFile(file.getAbsolutePath());
+        db.loadFile("test3.txt");
         db.addTask(null);
         assertEquals(0, db.getTasks().size());
     }
     
     @Test
     void removeTaskTest() throws IOException {
-        Database db = new Database();
-        File file = creatTestFile();
-        db.loadFile(file.getPath());
+        db.loadFile("test4.txt");
         db.addTask("Walk the dog");
         assertEquals(1, db.getTasks().size());
         
@@ -94,9 +90,7 @@ public class DatabaseTest {
     
     @Test
     void removeNullTaskTest() {
-        Database db = new Database();
-        File file = creatTestFile();
-        db.loadFile(file.getAbsolutePath());
+        db.loadFile("test5.txt");
         db.addTask("Walk the dog");
         assertEquals(1, db.getTasks().size());
         
@@ -114,9 +108,7 @@ public class DatabaseTest {
     
     @Test
     void removeNoneExistingTaskTest() {
-        Database db = new Database();
-        File file = creatTestFile();
-        db.loadFile(file.getAbsolutePath());
+        db.loadFile("test6.txt");
         db.addTask("Walk the dog");
         assertEquals(1, db.getTasks().size());
         
@@ -130,15 +122,5 @@ public class DatabaseTest {
         
         assertEquals(1, db.getTasks().size());
         assertEquals(expected, result);
-    }
-    
-    private File creatTestFile() {
-        File file = new File("src/test/java/com/leenk/files/test.txt");
-        try {
-            file.createNewFile();
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-        }
-        return file;
     }
 }

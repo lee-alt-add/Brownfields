@@ -18,11 +18,13 @@ import java.util.List;
  */
 public class Database {
     private File file;
+    private String filePath;
     
     public Database() {}
     
     public void loadFile(String fileName) {
-        file = new File(fileName);
+        filePath = "src/main/resources/" + fileName;
+        file = new File(filePath);
         if (file.exists()) {
             System.out.println("Opened " + file.getName() + " file.");
         }
@@ -47,15 +49,30 @@ public class Database {
         if (isNull(task) || !taskExists(task)) return;
         
         List<String> allTasks = getTasks();
-        String fileName = file.getAbsolutePath();
+        String fileName = file.getName();
         file.delete();
         loadFile(fileName);
         
         allTasks.stream().forEach(i -> writeToFile(i));
     }
     
+    public List<String> getTasks() {
+        List<String> output = new ArrayList<>();
+        try {
+            Files.lines(Paths.get(filePath))
+                    .forEach(i -> output.add(i.toLowerCase()));
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
+        return output;
+    }
+    
+    public void deleteDBFile() {
+        file.delete();
+    }
+    
     private void writeToFile(String task) {
-        try (FileWriter writer = new FileWriter(file.getAbsolutePath())) {
+        try (FileWriter writer = new FileWriter(filePath)) {
             writer.write(task);
         } catch (IOException e) {
             System.out.println("Error writing file: " + e.getMessage());
@@ -78,14 +95,4 @@ public class Database {
         return false;
     }
     
-    public List<String> getTasks() {
-        List<String> output = new ArrayList<>();
-        try {
-            Files.lines(Paths.get(file.getAbsolutePath()))
-                    .forEach(i -> output.add(i.toLowerCase()));
-        } catch (IOException e) {
-            System.out.println("Error reading file: " + e.getMessage());
-        }
-        return output;
-    }
 }
