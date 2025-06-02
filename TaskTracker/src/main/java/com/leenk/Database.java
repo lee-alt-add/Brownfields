@@ -32,7 +32,8 @@ public class Database {
             try {
                 System.out.println(file.getName() + " does not exist. Creating it...\nFile created");
                 file.createNewFile();
-            } catch (Exception e) {
+            } 
+            catch (Exception e) {
                 System.out.println("Error creating file");
             }
             
@@ -79,7 +80,8 @@ public class Database {
     private void writeToFile(String task) {
         try (FileWriter writer = new FileWriter(filePath)) {
             writer.write(task);
-        } catch (IOException e) {
+        } 
+        catch (IOException e) {
             System.out.println("Error writing file: " + e.getMessage());
         }
     }
