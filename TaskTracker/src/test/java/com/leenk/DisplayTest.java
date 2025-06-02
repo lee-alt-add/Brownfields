@@ -51,7 +51,7 @@ public class DisplayTest {
     @Test
     void showEmptyDatabaseTest() {
         Database db = new Database();
-        db.loadFile("tester");
+        db.loadFile("tester1");
         
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
         System.setOut(new PrintStream(buffer));
@@ -68,7 +68,7 @@ public class DisplayTest {
     @Test
     void showTest() {
         Database db = new Database();
-        db.loadFile("tester");
+        db.loadFile("tester2");
         db.addTask("Walk the dog");
         
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();

@@ -80,8 +80,8 @@ public class Database {
     }
     
     private void writeToFile(String task) {
-        try (FileWriter writer = new FileWriter(filePath)) {
-            writer.write(task);
+        try (FileWriter writer = new FileWriter(filePath, true)) {
+            writer.write(task + "\n");
         } 
         catch (IOException e) {
             System.out.println("Error writing file: " + e.getMessage());
