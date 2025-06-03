@@ -17,7 +17,7 @@ public class ProductTest {
     
     @BeforeEach
     void setup() {
-        product = new Product("Book", 10.00);
+        product = new Product("Book", 10.00, 4);
     }
     
     @Test
@@ -27,11 +27,11 @@ public class ProductTest {
     
     @Test
     void getPriceTest() {
-        assertTrue(10.00 == product.getPrice());
+        assertTrue(10.00 == product.getBeforeTaxPrice());
     }
     
     @Test
     void getPriceWithTaxTest() {
-        assertEquals(11.50, product.getPriceWithTax());
+        assertEquals(11.50, product.getAfterTaxPrice());
     }
 }

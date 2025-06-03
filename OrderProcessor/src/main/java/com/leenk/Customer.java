@@ -10,13 +10,19 @@ package com.leenk;
  */
 public class Customer {
     private String name;
+    private boolean loyal;
     
-    public Customer(String name) {
+    public Customer(String name, boolean loyal) {
         this.name = name;
+        this.loyal = loyal;
     }
     
     public String getName() {
         return name;
+    }
+    
+    public boolean isLoyal() {
+        return loyal;
     }
     
 }

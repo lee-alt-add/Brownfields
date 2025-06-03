@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CostomerTest {
     @Test
     void getNameTest() {
-        Customer customer = new Customer("Frank");
+        Customer customer = new Customer("Frank", true);
         assertTrue("Frank".equals(customer.getName()));
     }
     
