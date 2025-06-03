@@ -11,10 +11,12 @@ package com.leenk;
 public class Product {
     private String name;
     private double price;
+    private double priceWithTax;
     
     public Product(String name, double price) {
         this.name = name;
         this.price = price;
+        this.priceWithTax = price + (price * 15/100);
     }
     
     public String getName() {
@@ -23,5 +25,9 @@ public class Product {
     
     public double getPrice() {
         return price;
+    }
+    
+    public double getPriceWithTax() {
+        return priceWithTax;
     }
 }
