@@ -18,4 +18,12 @@ public class CostomerTest {
         assertTrue("Frank".equals(customer.getName()));
     }
     
+    @Test
+    void setLoyaltyNullTest() {
+        Customer customer = new Customer("Frank", true);
+        customer.setLoyalty(false);
+        assertFalse(customer.isLoyal());
+        
+    }
+    
 }

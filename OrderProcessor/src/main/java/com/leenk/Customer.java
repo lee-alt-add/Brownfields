@@ -20,8 +20,6 @@ public class Customer {
     }
     
     public void setLoyalty(boolean loyal) {
-        if (Helpers.isNull(loyal)) return;
-        
         this.loyal = loyal;
     }
     
