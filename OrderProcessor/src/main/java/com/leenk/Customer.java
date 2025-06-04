@@ -4,6 +4,8 @@
  */
 package com.leenk;
 
+import com.leenk.helpers.Helpers;
+
 /**
  *
  * @author Other Leenks
@@ -14,6 +16,12 @@ public class Customer {
     
     public Customer(String name, boolean loyal) {
         this.name = name;
+        this.loyal = loyal;
+    }
+    
+    public void setLoyalty(boolean loyal) {
+        if (Helpers.isNull(loyal)) return;
+        
         this.loyal = loyal;
     }
     

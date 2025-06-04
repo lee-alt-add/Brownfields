@@ -53,6 +53,12 @@ public class CartTest {
     
     @Test
     void getTotalCostTest() {
+        assertEquals(120.175, cart.getTotalCost());
+    }
+    
+    @Test
+    void getTotalCostNoDiscount() {
+        customer.setLoyalty(false);
         assertEquals(126.50, cart.getTotalCost());
     }
 }
