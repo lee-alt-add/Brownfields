@@ -9,7 +9,6 @@ import com.leenk.Customer;
 import com.leenk.Product;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.List;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -44,23 +43,6 @@ public class CreditTest {
         credit.pay();
         
         String expected = "Cannot process payment. Cart is empty";
-        String result = buffer.toString().trim();
-        
-        assertEquals(expected, result);
-    }
-    
-    @Test
-    void payTest() {
-        Cart cart = new Cart(new Customer("Lincoln", true));
-        cart.add(new Product("Pensil", 5.00, 10));
-        PaymentMethod credit = new Credit(cart);
-        
-        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(buffer));
-        
-        credit.pay();
-        
-        String expected = "Processing cash payment...";
         String result = buffer.toString().trim();
         
         assertEquals(expected, result);

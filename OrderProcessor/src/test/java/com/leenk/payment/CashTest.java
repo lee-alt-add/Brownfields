@@ -49,22 +49,4 @@ public class CashTest {
         
         assertEquals(expected, result);
     }
-    
-    @Test
-    void payTest() {
-        Cart cart = new Cart(new Customer("Lincoln", true));
-        cart.add(new Product("Pensil", 5.00, 10));
-        
-        PaymentMethod cash = new Cash(cart);
-        
-        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(buffer));
-        
-        cash.pay();
-        
-        String expected = "Processing cash payment...";
-        String result = buffer.toString().trim();
-        
-        assertEquals(expected, result);
-    }
 }

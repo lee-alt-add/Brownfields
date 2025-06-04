@@ -20,6 +20,7 @@ public class Cash implements PaymentMethod{
     
     @Override
     public void pay() {
+        ShowPaymentDetails show = new ShowPaymentDetails();
         if (Helpers.isNull(cart, "Cannot process payment. Cart is null")) {
             return;
         }
@@ -29,5 +30,11 @@ public class Cash implements PaymentMethod{
         }
         
         System.out.println("Processing cash payment...");
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e){
+            System.out.println("Could not sleep... " + e.getMessage());
+        }
+        show.of(cart);
     }
 }
