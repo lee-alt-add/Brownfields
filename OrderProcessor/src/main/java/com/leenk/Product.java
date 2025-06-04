@@ -4,6 +4,8 @@
  */
 package com.leenk;
 
+import com.leenk.helpers.Helpers;
+
 /**
  *
  * @author Other Leenks
@@ -12,13 +14,11 @@ public class Product {
     private String name;
     private double price;
     private int quantity;
-    private double priceWithTax;
     
     public Product(String name, double price, int quantity) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
-        this.priceWithTax = price + (price * 15/100);
     }
     
     public String getName() {
@@ -30,6 +30,22 @@ public class Product {
     }
     
     public double getAfterTaxPrice() {
-        return priceWithTax * quantity;
+        return (price + getTaxAmount(price)) * quantity;
+    }
+    
+    public double getDiscountPrice() {
+        return getAfterTaxPrice() - getDiscountAmount(getAfterTaxPrice());
+    }
+    
+    public double getDiscountAmount(double price) {
+        if (Helpers.isNegative(price)) return -1;
+        
+        return price * 5/100;
+    }
+    
+    public double getTaxAmount(double price) {
+        if (Helpers.isNegative(price)) return -1;
+        
+        return price * 15/100;
     }
 }

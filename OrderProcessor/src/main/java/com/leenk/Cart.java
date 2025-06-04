@@ -57,19 +57,18 @@ public class Cart {
     
     // Returnable
     
-    private double applyDiscount(double amount) {
-        return amount - (amount * 5/100);
-    }
-    
     public double getTotalCost(){
         if (orders.isEmpty()) return 0.00;
-        double cost = orders.stream().mapToDouble(i -> i.getAfterTaxPrice()).sum();
         
         if (customer.isLoyal()){
-            return applyDiscount(cost);
+            return orders.stream()
+                    .mapToDouble(i -> i.getDiscountPrice())
+                    .sum();
         }
         else {
-            return cost;
+            return orders.stream()
+                    .mapToDouble(i -> i.getAfterTaxPrice())
+                    .sum();
         }
     }
     
