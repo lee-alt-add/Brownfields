@@ -60,17 +60,17 @@ public class Cart {
     
     public Map<String, Double> getOrderDetails() {
         
-        double totalCost = getOrders()
+        double totalCost = Math.round(getOrders()
                 .stream()
                 .mapToDouble(i -> i.getTotalCost())
-                .sum();
+                .sum());
         
-        double totalTax = getOrders()
+        double totalTax = Math.round(getOrders()
                 .stream().mapToDouble(i -> i.getTax())
-                .sum();
+                .sum());
         
         double totalDiscount = getCustomer().isLoyal() ?
-                getOrders().stream().mapToDouble(i -> i.getDiscount()).sum() :
+                Math.round(getOrders().stream().mapToDouble(i -> i.getDiscount()).sum()) :
                 0.00;
         
         double finalCost = totalCost + totalTax - totalDiscount;

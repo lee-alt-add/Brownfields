@@ -7,7 +7,6 @@ package com.leenk;
 import com.leenk.payment.Cash;
 import com.leenk.payment.Credit;
 import com.leenk.payment.PaymentMethod;
-import com.leenk.payment.ShowPaymentDetails;
 
 /**
  *
@@ -16,8 +15,6 @@ import com.leenk.payment.ShowPaymentDetails;
 public class ProcessPayment {
     
     public static void process(Cart cart, String paymentMethod) {
-        ShowPaymentDetails show = new ShowPaymentDetails();
-        
         if (paymentMethod.toLowerCase().trim().equals("cash")) {
             PaymentMethod cash = new Cash(cart);
             cash.pay();
