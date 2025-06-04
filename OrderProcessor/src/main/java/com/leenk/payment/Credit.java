@@ -29,7 +29,7 @@ public class Credit implements PaymentMethod{
             return;
         }
         
-        System.out.println("Processing cash payment...");
+        System.out.println("Processing credit payment...");
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e){

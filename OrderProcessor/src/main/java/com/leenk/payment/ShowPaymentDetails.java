@@ -19,7 +19,7 @@ public class ShowPaymentDetails {
                 "Order processed successfully!\n" +
                 "Customer Name: " + cart.getCustomer().getName() + "\n" +
                 "Items:\n" +
-                "----------\n\n");
+                "----------");
         cart.getOrders()
                 .stream()
                 .forEach(i -> System.out.println("- " + i.getName() + " R" + i.getTotalCost()));
