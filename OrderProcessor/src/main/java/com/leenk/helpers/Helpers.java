@@ -17,6 +17,14 @@ public class Helpers {
         return false;
     }
     
+    public static boolean isNull(Object obj, String message) {
+        if (obj == null) {
+            System.out.println(message);
+            return true;
+        }
+        return false;
+    }
+    
     public static boolean isNegative(double number) {
         if (number <= 0.00){
             System.out.println("number cannot be negative");
