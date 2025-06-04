@@ -25,27 +25,19 @@ public class Product {
         return name;
     }
     
-    public double getBeforeTaxPrice() {
+    public double getTotalCost() {
         return price * quantity;
     }
     
-    public double getAfterTaxPrice() {
-        return (price + getTaxAmount(price)) * quantity;
-    }
-    
-    public double getDiscountPrice() {
-        return getAfterTaxPrice() - getDiscountAmount(getAfterTaxPrice());
-    }
-    
-    public double getDiscountAmount(double price) {
+    public double getDiscount() {
         if (Helpers.isNegative(price)) return -1;
         
-        return price * 5/100;
+        return getTotalCost() * 5/100;
     }
     
-    public double getTaxAmount(double price) {
+    public double getTax() {
         if (Helpers.isNegative(price)) return -1;
         
-        return price * 15/100;
+        return getTotalCost() * 15/100;
     }
 }

@@ -6,7 +6,9 @@ package com.leenk;
 
 import com.leenk.helpers.Helpers;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -57,19 +59,28 @@ public class Cart {
     
     // Returnable
     
-    public double getTotalCost(){
-        if (orders.isEmpty()) return 0.00;
+    public Map<String, Double> getOrderDetails() {
         
-        if (customer.isLoyal()){
-            return orders.stream()
-                    .mapToDouble(i -> i.getDiscountPrice())
-                    .sum();
-        }
-        else {
-            return orders.stream()
-                    .mapToDouble(i -> i.getAfterTaxPrice())
-                    .sum();
-        }
+        double totalCost = getOrders()
+                .stream()
+                .mapToDouble(i -> i.getTotalCost())
+                .sum();
+        
+        double totalTax = getOrders()
+                .stream().mapToDouble(i -> i.getTax())
+                .sum();
+        
+        double totalDiscount = getCustomer().isLoyal() ?
+                getOrders().stream().mapToDouble(i -> i.getDiscount()).sum() :
+                0.00;
+        
+        double finalCost = totalCost + totalTax - totalDiscount;
+        
+        return Map.of(
+                "cost", totalCost,
+                "tax", totalTax,
+                "discount", totalDiscount,
+                "finalCost", finalCost);
     }
     
 }
