@@ -28,4 +28,19 @@ public class User {
     public String getUserName() {
         return userName;
     }
+    
+    @Override
+    public String toString() {
+        return "user: " + userID + "userNamer: " + userName;
+    }
+    
+    @Override
+    public boolean equals(Object object) {
+        if (object == null) return false;
+        if (!(object instanceof User)) return false;
+        
+        User user = (User) object;
+        
+        return user.getUserName().equals(this.userName) && user.getUserID() == this.userID;
+    }
 }
