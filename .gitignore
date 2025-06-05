@@ -25,3 +25,4 @@ replay_pid*
 /ShoppingCart/target/
 /TaskTracker/target/
 /OrderProcessor/target/
+/UserAuthManager/target/
