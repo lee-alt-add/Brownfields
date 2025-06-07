@@ -20,9 +20,11 @@ public class UserAuthManager {
     }
     
     public void changeDBType(StorageType storageType) {
-        if (storageType.equals(StorageType.MEMORY)) toMemory();
-        else if (storageType.equals(StorageType.FILE)) toFileStorage();
-        else System.out.println("Invalid memory type");
+        switch (storageType) {
+            case StorageType.MEMORY -> toMemory();
+            case StorageType.FILE -> toFileStorage();
+            default -> System.out.println("Invalid memory type");
+        }
     }
     
     public StorageType getDBType() {
