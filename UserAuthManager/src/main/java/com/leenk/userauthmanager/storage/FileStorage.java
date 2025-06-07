@@ -23,12 +23,15 @@ public class FileStorage implements Storage {
         file = new File(filePath);
     }
     
-    public void save(User user) {
+    public User save(User user) {
+        if (validate(user)) return null;
+        
         try (FileWriter writer = new FileWriter(filePath, true)) {
             writer.write(user.getUserName() + "=" + user.getHashedPassword() + "\n");
         } catch (IOException e) {
             System.out.println("Failed to write to file: " + e.getMessage());
         }
+        return user;
     }
     
     public User retrieve(String name, String password) {

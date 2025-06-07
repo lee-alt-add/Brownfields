@@ -17,9 +17,11 @@ public class InMemory implements Storage {
     
     public InMemory() {}
     
-    public void save(User user) {
-        if (user == null) return;
+    public User save(User user) {
+        if (user == null) return null;
+        if (validate(user)) return null;
         users.add(user);
+        return user;
     }
     
     public User retrieve(String name, String password) {

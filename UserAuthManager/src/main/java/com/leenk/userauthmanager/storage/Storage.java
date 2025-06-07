@@ -12,7 +12,7 @@ import java.util.UUID;
  * @author Other Leenks
  */
 public interface Storage {
-    void save(User user);
+    User save(User user);
     User retrieve(String name, String password);
     boolean validate(User user);
 }
