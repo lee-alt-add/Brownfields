@@ -10,6 +10,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -27,7 +29,7 @@ public class FileStorage implements Storage {
         if (validate(user)) return null;
         
         try (FileWriter writer = new FileWriter(filePath, true)) {
-            writer.write(user.getUserName() + "=" + user.getHashedPassword() + "\n");
+            writer.write(user.getUserName() + "=" + user.getHashedPassword()  + "\n");
         } catch (IOException e) {
             System.out.println("Failed to write to file: " + e.getMessage());
         }

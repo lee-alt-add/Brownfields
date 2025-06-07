@@ -30,6 +30,10 @@ public class User {
         return userName;
     }
     
+    public String getUnHashedPassword() {
+        return password;
+    }
+    
     @Override
     public String toString() {
         return "user: " + hashedPassword + "userNamer: " + userName;
