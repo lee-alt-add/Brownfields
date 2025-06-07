@@ -19,6 +19,12 @@ public class UserAuthManager {
         db = storageType.equals(StorageType.MEMORY) ?  new InMemory() : new FileStorage();
     }
     
+    public void changeDBType(StorageType storageType) {
+        if (storageType.equals(StorageType.MEMORY)) toMemory();
+        else if (storageType.equals(StorageType.FILE)) toFileStorage();
+        else System.out.println("Invalid memory type");
+    }
+    
     public StorageType getDBType() {
         return db instanceof InMemory ? StorageType.MEMORY : StorageType.FILE;
     }
@@ -39,5 +45,17 @@ public class UserAuthManager {
         else System.out.println("Welcome " + name);
         
         return user;
+    }
+    
+    private void toMemory() {
+        Storage db2 = new InMemory();
+        db.retrieveAll().stream().forEach(i -> db2.save(i));
+        db = db2;
+    }
+    
+    private void toFileStorage() {
+        Storage db2 = new FileStorage();
+        db.retrieveAll().stream().forEach(i -> db2.save(i));
+        db = db2;
     }
 }

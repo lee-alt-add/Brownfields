@@ -5,6 +5,7 @@
 package com.leenk.userauthmanager.storage;
 
 import com.leenk.userauthmanager.User;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -14,5 +15,6 @@ import java.util.UUID;
 public interface Storage {
     User save(User user);
     User retrieve(String name, String password);
+    List<User> retrieveAll();
     boolean validate(User user);
 }
