@@ -19,7 +19,7 @@ public class User {
     public User(String userName, String password) {
         this.hashedPassword = UUID.nameUUIDFromBytes(password.getBytes(StandardCharsets.UTF_8));
         this.userName = userName.toLowerCase().trim();
-        this.password = password.toLowerCase().trim();
+        this.password = password.trim();
     }
     
     public UUID getHashedPassword() {

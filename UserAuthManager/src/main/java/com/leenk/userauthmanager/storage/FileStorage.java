@@ -22,7 +22,7 @@ public class FileStorage implements Storage {
     private File file;
     
     public FileStorage() {
-        file = new File(filePath);
+        file = createFile(filePath);
     }
     
     public User save(User user) {
@@ -52,7 +52,8 @@ public class FileStorage implements Storage {
         
         try {
             output = Files.lines(Paths.get(filePath))
-                    .map(i -> new User(i.split("=")[0], i.split("=")[1]))
+                    .map(i -> !i.equals("") ? new User(i.split("=")[0], i.split("=")[2]): null)
+                    .filter(i -> i != null)
                     .collect(Collectors.toList());
         } 
         catch (IOException e) {

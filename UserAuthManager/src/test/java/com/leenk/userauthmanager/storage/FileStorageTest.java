@@ -5,37 +5,43 @@
 package com.leenk.userauthmanager.storage;
 
 import com.leenk.userauthmanager.User;
+import java.util.List;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.TestInstance;
 
 /**
  *
  * @author Other Leenks
  */
 public class FileStorageTest {
-    @Test
-    void saveAndRetrieveTest() {
-        FileStorage db = new FileStorage();
-        User user1 = new User("Lindo", "Maximum100");
-        User user2 = new User("Hloni", "Minimum1");
+    private FileStorage db;
+    private User user1;
+    private User user2;
+    
+    @BeforeEach
+    void setup() {
+        db = new FileStorage();
+        user1 = new User("Lindo", "Maximum100");
+        user2 = new User("Hloni", "Minimum1");
         
         db.save(user1);
         db.save(user2);
+    }
+    
+    @Test
+    void saveAndRetrieveTest() {
         assertEquals(user1, db.retrieve("Lindo", "Maximum100"));
         assertEquals(user2, db.retrieve("Hloni", "Minimum1"));
-        db.clear();
     }
     
     @Test
     void saveAndRetrieveAllTest() {
-        FileStorage db = new FileStorage();
-        User user1 = new User("Lindo", "Maximum100");
-        User user2 = new User("Hloni", "Minimum1");
-        
-        db.save(user1);
-        db.save(user2);
-        assertEquals(2, db.retrieveAll().size());
-        assertFalse(db.retrieveAll().stream().anyMatch(i -> i == null));
-        db.clear();
+        List<User> users = db.retrieveAll();
+        assertEquals(2, users.size());
+        assertFalse(users.stream().anyMatch(i -> i == null));
+        assertEquals(user1, users.getFirst());
     }
 }
