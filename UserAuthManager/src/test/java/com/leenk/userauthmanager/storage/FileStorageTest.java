@@ -25,4 +25,17 @@ public class FileStorageTest {
         assertEquals(user2, db.retrieve("Hloni", "Minimum1"));
         db.clear();
     }
+    
+    @Test
+    void saveAndRetrieveAllTest() {
+        FileStorage db = new FileStorage();
+        User user1 = new User("Lindo", "Maximum100");
+        User user2 = new User("Hloni", "Minimum1");
+        
+        db.save(user1);
+        db.save(user2);
+        assertEquals(2, db.retrieveAll().size());
+        assertFalse(db.retrieveAll().stream().anyMatch(i -> i == null));
+        db.clear();
+    }
 }
