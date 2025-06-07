@@ -7,8 +7,6 @@ package com.leenk.userauthmanager.storage;
 import com.leenk.userauthmanager.User;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
 
 /**
  *
@@ -21,18 +19,18 @@ public class InMemory implements Storage {
     
     public void save(User user) {
         if (user == null) return;
-        if (validate(user)) return;
         users.add(user);
     }
     
     public User retrieve(String name, String password) {
-        if (name.isEmpty() || password.isEmpty()) return null;
+        if ((name.trim().isEmpty() || name.isBlank()) || 
+                (password.trim().isEmpty() || password.isBlank())){
+            return null;
+        }
         
         User user = new User(name, password);
         
-        if (validate(user)) return user;
-        
-        else return null;
+        return validate(user) ? user : null;
         
     }
     

@@ -5,24 +5,25 @@
 package com.leenk.userauthmanager;
 
 import java.util.UUID;
+import java.nio.charset.StandardCharsets;
 
 /**
  *
  * @author Other Leenks
  */
 public class User {
-    private UUID userID;
+    private UUID hashedPassword;
     private String userName;
     private String password;
     
     public User(String userName, String password) {
-        this.userID = UUID.randomUUID();
-        this.userName = userName;
-        this.password = password;
+        this.hashedPassword = UUID.nameUUIDFromBytes(password.getBytes(StandardCharsets.UTF_8));
+        this.userName = userName.toLowerCase().trim();
+        this.password = password.toLowerCase().trim();
     }
     
-    public UUID getUserID() {
-        return userID;
+    public UUID getHashedPassword() {
+        return hashedPassword;
     }
     
     public String getUserName() {
@@ -31,7 +32,7 @@ public class User {
     
     @Override
     public String toString() {
-        return "user: " + userID + "userNamer: " + userName;
+        return "user: " + hashedPassword + "userNamer: " + userName;
     }
     
     @Override
@@ -41,6 +42,6 @@ public class User {
         
         User user = (User) object;
         
-        return user.getUserName().equals(this.userName) && user.getUserID() == this.userID;
+        return user.getUserName().equals(this.userName) && user.getHashedPassword().equals(this.hashedPassword);
     }
 }
