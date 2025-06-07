@@ -36,6 +36,10 @@ public class InMemory implements Storage {
         
     }
     
+    public List<User> retrieveAll() {
+        return users;
+    }
+    
     public boolean validate(User user) {
         return users.stream().anyMatch(i -> i.equals(user));
     }
