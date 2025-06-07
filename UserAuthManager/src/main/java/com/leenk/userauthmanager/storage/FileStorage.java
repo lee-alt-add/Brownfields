@@ -29,7 +29,7 @@ public class FileStorage implements Storage {
         if (validate(user)) return null;
         
         try (FileWriter writer = new FileWriter(filePath, true)) {
-            writer.write(user.getUserName() + "=" + user.getHashedPassword()  + "\n");
+            writer.write(user.getUserName() + "=" + user.getHashedPassword() + "=" + user.getUnHashedPassword()  + "\n");
         } catch (IOException e) {
             System.out.println("Failed to write to file: " + e.getMessage());
         }
@@ -45,6 +45,20 @@ public class FileStorage implements Storage {
         User user = new User(name, password);
         
         return validate(user) ? user : null;
+    }
+    
+    public List<User> retrieveAll() {
+        List<User> output = null;
+        
+        try {
+            output = Files.lines(Paths.get(filePath))
+                    .map(i -> new User(i.split("=")[0], i.split("=")[1]))
+                    .collect(Collectors.toList());
+        } 
+        catch (IOException e) {
+            System.out.println("Failed to reading to file: " + e.getMessage());
+        }
+        return output;
     }
     
     public boolean validate(User user) {
