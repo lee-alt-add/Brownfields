@@ -32,8 +32,8 @@
 
     <scm>
         <connection>scm:git:https://github.com/lee-alt-add/Brownfields.git </connection>
-        <developerConnection>scm:ssh:git@github.com:lee-alt-add/Brownfields.git</developerConnection>
-        <tag>v2.0.0</tag>
+        <developerConnection>scm:git:ssh:git@github.com:lee-alt-add/Brownfields.git</developerConnection>
+        <tag>HEAD</tag>
         <url>https://github.com/lee-alt-add/Brownfields </url>
     </scm>
 
