@@ -32,7 +32,7 @@
 
     <scm>
         <connection>scm:git:https://github.com/lee-alt-add/Brownfields.git </connection>
-        <developerConnection>scm:git:ssh:git@github.com:lee-alt-add/Brownfields.git</developerConnection>
+        <developerConnection>scm:git:git@github.com:lee-alt-add/Brownfields.git</developerConnection>
         <tag>HEAD</tag>
         <url>https://github.com/lee-alt-add/Brownfields </url>
     </scm>
