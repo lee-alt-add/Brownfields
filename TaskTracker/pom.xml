@@ -4,7 +4,7 @@
 
   <groupId>com.leenk</groupId>
   <artifactId>TaskTracker</artifactId>
-  <version>2.0.0-SNAPSHOT</version>
+  <version>2.0.0</version>
 
   <name>TaskTracker</name>
   <!-- FIXME change it to the project's website -->
