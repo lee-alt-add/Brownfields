@@ -1,0 +1,19 @@
+name: Brownfields CI
+
+on: [push, pull-request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: lincoln15/wethinkcode:0.0.3-snapshot
+
+    steps:
+      - name: Checking out code
+        uses: actions/checkout@v4
+
+      - name: Compiling
+        run: mvn compile
+
+      - name: Testing
+        run: mvn test
