@@ -1,6 +1,10 @@
 name: Brownfields CI
 
-on: [push, pull-request]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
@@ -9,11 +13,11 @@ jobs:
       image: lincoln15/wethinkcode:0.0.3-snapshot
 
     steps:
-      - name: Checking out code
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Compiling
-        run: mvn compile
+      - name: Compile
+        run: mvn -B compile
 
-      - name: Testing
-        run: mvn test
+      - name: Test
+        run: mvn -B test
